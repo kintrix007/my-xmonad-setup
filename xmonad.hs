@@ -8,6 +8,8 @@
 --
 
 import XMonad
+import XMonad.Layout.Gaps
+import XMonad.Layout.Spacing
 import Data.Monoid
 import System.Exit
 
@@ -36,7 +38,7 @@ myBorderWidth   = 2
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask       = mod4Mask
+myModMask       = mod1Mask
 
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -184,7 +186,13 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myLayout = tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
+     tiled   =  spaced $ Tall nmaster delta ratio
+
+     spaced = innerSpaced . outerSpaced
+     innerSpaced = spacing innerGap
+     outerSpaced = gaps [ (L,outerGap), (R,outerGap)
+                        , (U,outerGap), (D,outerGap)
+                        ]
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -194,6 +202,9 @@ myLayout = tiled ||| Mirror tiled ||| Full
 
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
+
+     innerGap = 2
+     outerGap = 3
 
 ------------------------------------------------------------------------
 -- Window rules:
