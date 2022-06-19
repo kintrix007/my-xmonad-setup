@@ -10,6 +10,7 @@
 import XMonad
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
+import XMonad.Layout.Spiral
 import Data.Monoid
 import System.Exit
 
@@ -186,9 +187,9 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myLayout = tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   =  spaced $ Tall nmaster delta ratio
+     tiled = spaced $ Tall nmaster delta ratio
 
-     spaced = innerSpaced . outerSpaced
+     spaced      = innerSpaced . outerSpaced
      innerSpaced = spacing innerGap
      outerSpaced = gaps [ (L,outerGap), (R,outerGap)
                         , (U,outerGap), (D,outerGap)
@@ -255,8 +256,8 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-    spawn "xrandr -s 1280x1024"
-    spawn "xsetroot -solid '#50567a'"
+    spawn "xrandr -s 1280x960"
+    spawn "xsetroot -solid '#50567a' -cursor_name left_ptr"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
