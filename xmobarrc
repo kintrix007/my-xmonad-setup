@@ -1,0 +1,11 @@
+Config { font = "monospace"
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = TopW L 100
+       , commands = []
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %cpu% | %memory% }{ %uname% "
+       }
