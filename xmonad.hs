@@ -254,7 +254,9 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
+myStartupHook = do
+    spawn "xrandr -s 1280x1024"
+    spawn "xsetroot -solid '#50567a'"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
