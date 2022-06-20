@@ -10,7 +10,7 @@ Config { font = "xft:monospace:size=8:antialias=true"
        , template = " %cpu% | %memory% | %eth0% }{ %date% | %battery% | <fc=lightblue>%whoami% @ %hostname%</fc> "
        , commands =
            [ Run Cpu     [ "--template" , "CPU: <total>%"
-                         , "--Low"      , "30"
+                         , "--Low"      , "40"
                          , "--High"     , "80"
                          , "--low"      , "darkgreen"
                          , "--normal"   , "darkorange"
