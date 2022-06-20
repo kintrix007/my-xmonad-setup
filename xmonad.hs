@@ -20,6 +20,10 @@ import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
+-- Set this as the screen resolution
+--
+myResolution    = "1280x960"
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -259,7 +263,7 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-    spawnOnce "xrandr -s 1280x960"
+    spawnOnce "xrandr -s " ++ myResolution
     spawnOnce "xsetroot -solid '#50567a' -cursor_name left_ptr"
 
 ------------------------------------------------------------------------
