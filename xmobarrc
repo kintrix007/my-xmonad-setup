@@ -7,7 +7,7 @@ Config { font = "xft:monospace:size=8:antialias=true"
        , allDesktops = True
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %cpu% | %memory% | %eth0% } %date% { %StdinReader% | %battery% "
+       , template = " %cpu% | %memory% | %eth0% } %date% { %StdinReader% | %updates% | %kbd% | %battery% "
        , commands =
            [ Run Cpu     [ "--template" , "CPU: <total>%"
                          , "--Low"      , "40"
@@ -43,6 +43,7 @@ Config { font = "xft:monospace:size=8:antialias=true"
                          , "--high"     , "darkred"
                          , "-S"         , "True"
                          ] 10
+           , Run Kbd     [("hu", "HU"), ("us", "US"), ("jp", "JP")]
            , Run Date    "<fc=#777777>%a</fc> %H:%M <fc=#777777>%h %d</fc>" "date" 10
            , Run StdinReader
            ]
