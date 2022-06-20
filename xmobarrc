@@ -1,7 +1,7 @@
 Config { font = "xft:monospace:size=8:antialias=true"
        , bgColor = "#121212"
        , fgColor = "grey"
-       , position = TopW C 80
+       , position = TopW C 85
        , border = FullBM 0
        , borderColor = "#333333"
        , allDesktops = True
