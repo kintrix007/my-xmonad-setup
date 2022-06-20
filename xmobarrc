@@ -7,18 +7,18 @@ Config { font = "xft:monospace:size=8:antialias=true"
        , allDesktops = True
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %cpu% | %memory% | %eth0% }{ %date% | %battery% | <fc=lightblue>%whoami% @ %hostname%</fc> "
+       , template = " %cpu% | %memory% | %eth0% } %date% { %StdinReader% | %battery% "
        , commands =
            [ Run Cpu     [ "--template" , "CPU: <total>%"
                          , "--Low"      , "40"
-                         , "--High"     , "80"
+                         , "--High"     , "70"
                          , "--low"      , "darkgreen"
                          , "--normal"   , "darkorange"
                          , "--high"     , "darkred"
                          ] 10
            , Run Memory  [ "--template" , "Mem: <usedratio>%"
-                         , "--Low"      , "30"
-                         , "--High"     , "60"
+                         , "--Low"      , "35"
+                         , "--High"     , "65"
                          , "--low"      , "darkgreen"
                          , "--normal"   , "darkorange"
                          , "--high"     , "darkred"
@@ -35,13 +35,15 @@ Config { font = "xft:monospace:size=8:antialias=true"
                          , "-i"         , "Charged"
                          ] 10
            , Run Network "eth0"
-                         [ "--template" , "dw <rx>KB/s - up <tx>KB/s"
-                         , "--Low"      , "1000000"
-                         , "--High"     , "6000000"
+                         [ "--template" , "Eth: dw <rx> - up <tx>"
+                         , "--Low"      , "2500000"
+                         , "--High"     , "7500000"
                          , "--low"      , "darkgreen"
                          , "--normal"   , "darkorange"
                          , "--high"     , "darkred"
+                         , "-S"         , "True"
                          ] 10
-           , Run Date    "%H:%M %h %d, %a" "date" 10
+           , Run Date    "<fc=#777777>%a</fc> %H:%M <fc=#777777>%h %d</fc>" "date" 10
+           , Run StdinReader
            ]
        }
