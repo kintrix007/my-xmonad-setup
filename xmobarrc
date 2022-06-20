@@ -43,7 +43,8 @@ Config { font = "xft:monospace:size=8:antialias=true"
                          , "--high"     , "darkred"
                          , "-S"         , "True"
                          ] 10
-           , Run Kbd     [("hu", "HU"), ("us", "US"), ("jp", "JP")]
+           , Run Kbd     [ ("hu", "HU"), ("us", "US"), ("jp", "JP") ]
+           , Run Com     "xbps-updates" [ "--count" ] "updates" 600
            , Run Date    "<fc=#777777>%a</fc> %H:%M <fc=#777777>%h %d</fc>" "date" 10
            , Run StdinReader
            ]
