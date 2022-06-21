@@ -71,7 +71,8 @@ myFocusedBorderColor = "#fbb86c"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    --[ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm .|. shiftMask, xK_Return), spawn "$TERMINAL" )
 
     -- switch keyboard layout
     , ((modm,               xK_Escape), spawn "switch-kb-layout")
