@@ -258,7 +258,7 @@ myLogHook h = dynamicLogWithPP $ def
 	      { ppLayout        = const ""
               -- Two passes for the title of the active window
               , ppTitleSanitize = shorten 20
-              , ppTitle         = id
+	      , ppTitle         = wrap "<fc=#777777>" "</fc>"
               -- Name of the workspaces that have windows
               --, ppHidden        = wrap "<fc=#666666>(" ")</fc>"
               , ppHidden        = const ""
