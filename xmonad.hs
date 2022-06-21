@@ -14,6 +14,7 @@ import XMonad.Layout.Spiral
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
 import Data.Monoid
 import System.Exit
@@ -237,6 +238,7 @@ myLayout = avoidStruts tiled ||| avoidStruts (Mirror tiled) ||| Full
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , isDialog                      --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
