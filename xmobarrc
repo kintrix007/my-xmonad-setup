@@ -7,7 +7,7 @@ Config { font = "xft:monospace:size=8:antialias=true"
        , allDesktops = True
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`$TERMINAL -e htop`>%cpu% | %memory%</action> | %eth0% } %date% { %StdinReader% | Upd: <fc=darkgreen>%updates%</fc> | %kbd% | %battery% "
+       , template = " <action=`$TERMINAL -e htop`>%cpu% | %memory%</action> | %eth0% } %date% { %StdinReader% | Upd: <fc=darkgreen>%updates%</fc> | <action=`switch-kb-layout`>%kbd%</action> | %battery% "
        , commands =
            [ Run Cpu     [ "--template" , "CPU: <total>%"
                          , "--Low"      , "40"
