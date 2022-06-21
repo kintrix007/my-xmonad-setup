@@ -73,6 +73,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
+    -- switch keyboard layout
+    , ((modm,               xK_Escape), spawn "switch-kb-layout")
+
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "dmenu_run")
 
