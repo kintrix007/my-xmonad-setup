@@ -268,7 +268,7 @@ myLogHook h = dynamicLogWithPP $ def
               -- Name of the active workspace
 	      , ppCurrent       = wrap "[" "]"
               --
-              , ppSep           = " - "
+              , ppSep           = " "
               -- Format of the final output
               , ppOutput        = hPutStrLn h
               }
