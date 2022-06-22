@@ -1,4 +1,4 @@
-Config { font = "xft:monospace:size=8:antialias=true"
+Config { font = "xft:Fira Mono:weight=bold:size=8:antialias=true:hinting=true"
        , bgColor = "#121212"
        , fgColor = "#bbbbbb"
        , position = TopW C 85
