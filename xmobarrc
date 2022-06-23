@@ -1,13 +1,15 @@
 Config { font = "xft:Fira Mono:weight=bold:size=8:antialias=true:hinting=true"
+       , additionalFonts = [ "xft:Noto Mono:size=10:antialias=true:hinting=true"
+                           ]
        , bgColor = "#121212"
        , fgColor = "#bbbbbb"
        , position = TopW C 85
-       , border = FullBM 0
+       , border = FullB
        , borderColor = "#333333"
        , allDesktops = True
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`$TERMINAL -e htop`>%cpu% | %memory%</action> | %eth0% } %date% { %StdinReader% | Upd: <fc=#5ae05a>%updates%</fc> | <action=`switch-kb-layout`>%kbd%</action> | %battery% "
+       , template = " <action=`$TERMINAL -e htop`>%cpu% | %memory%</action> | %eth0% } %date% { %StdinReader% | <action=`$TERMINAL --hold -e sudo xbps-install -u`>Upd: <fc=#5ae05a>%updates%</fc></action> | <action=`switch-kb-layout`>%kbd%</action> | %battery% "
        , commands =
            [ Run Cpu     [ "--template" , "CPU: <total>%"
                          , "--Low"      , "40"
@@ -35,7 +37,7 @@ Config { font = "xft:Fira Mono:weight=bold:size=8:antialias=true:hinting=true"
                          , "-i"         , "Charged"
                          ] 10
            , Run Network "eth0"
-                         [ "--template" , "Eth: dw <rx> - up <tx>"
+                         [ "--template" , "Eth: <fn=1>⇓</fn><rx> <fn=1>⇑</fn><tx>"
                          , "--Low"      ,  "3500000"
                          , "--High"     , "10000000"
                          , "--low"      , "#5ae05a"

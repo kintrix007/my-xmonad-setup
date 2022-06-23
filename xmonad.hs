@@ -262,7 +262,7 @@ myEventHook = mempty
 --
 myLogHook h = dynamicLogWithPP $ def
               -- Name of the current layout
-	      { ppLayout        = const ""
+              { ppLayout        = const ""
               -- Two passes for the title of the active window
               , ppTitleSanitize = shorten 20
 	      , ppTitle         = wrap "<fc=#777777>" "</fc>"
