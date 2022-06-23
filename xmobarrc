@@ -3,7 +3,7 @@ Config { font = "xft:Fira Mono:weight=bold:size=8:antialias=true:hinting=true"
                            ]
        , bgColor = "#121212"
        , fgColor = "#bbbbbb"
-       , position = TopW C 85
+       , position = Top
        , border = FullB
        , borderColor = "#333333"
        , allDesktops = True
