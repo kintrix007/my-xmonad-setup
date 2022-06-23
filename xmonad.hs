@@ -24,7 +24,8 @@ import qualified Data.Map        as M
 
 -- Set this as the screen resolution
 --
-myResolution    = "1280x960"
+--myResolution    = "1280x960"
+myResolution    = "1920x1080"
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
