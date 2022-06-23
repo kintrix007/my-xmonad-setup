@@ -13,6 +13,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Spiral
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
@@ -298,7 +299,7 @@ myStartupHook = do
 main = do
     xmobarProc <- spawnPipe "xmobar ~/.config/xmonad/xmobarrc"
     -- xmobarProc <- spawnPipe "xmobar -x 0 ~/.config/xmonad/xmobarrc"
-    xmonad $ docks $ def {
+    xmonad $ docks $ ewmh $ def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
