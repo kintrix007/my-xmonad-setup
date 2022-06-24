@@ -11,6 +11,8 @@ import XMonad
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import XMonad.Layout.Spiral
+import XMonad.Layout.NoBorders
+import XMonad.Layout.Fullscreen
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.EwmhDesktops
@@ -199,7 +201,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts tiled ||| avoidStruts (Mirror tiled) ||| Full
+myLayout = avoidStruts (tiled ||| Mirror tiled) ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled = spaced $ Tall nmaster delta ratio
@@ -243,7 +245,9 @@ myManageHook = composeAll
     , isDialog                      --> doFloat
     , isFullscreen                  --> doFullFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , resource  =? "kdesktop"       --> doIgnore
+    , fullscreenManageHook
+    ]
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -254,6 +258,7 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
+--myEventHook = ewmhFullscreen
 myEventHook = mempty
 
 ------------------------------------------------------------------------
@@ -267,12 +272,12 @@ myLogHook h = dynamicLogWithPP $ def
               { ppLayout        = const ""
               -- Two passes for the title of the active window
               , ppTitleSanitize = shorten 20
-	      , ppTitle         = wrap "<fc=#777777>" "</fc>"
+              , ppTitle         = wrap "<fc=#777777>" "</fc>"
               -- Name of the workspaces that have windows
               --, ppHidden        = wrap "<fc=#666666>(" ")</fc>"
               , ppHidden        = const ""
               -- Name of the active workspace
-	      , ppCurrent       = wrap "[" "]"
+              , ppCurrent       = wrap "[" "]"
               --
               , ppSep           = " "
               -- Format of the final output
@@ -299,7 +304,7 @@ myStartupHook = do
 main = do
     xmobarProc <- spawnPipe "xmobar ~/.config/xmonad/xmobarrc"
     -- xmobarProc <- spawnPipe "xmobar -x 0 ~/.config/xmonad/xmobarrc"
-    xmonad $ docks $ ewmh $ def {
+    xmonad $ fullscreenSupport $ docks $ ewmh $ def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
